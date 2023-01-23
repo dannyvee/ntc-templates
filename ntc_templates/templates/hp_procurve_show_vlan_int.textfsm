@@ -1,0 +1,14 @@
+Value INTERFACE (.+)
+Value NAME (.+)
+Value TAG_VLAN_ID (.+)
+Value UNTAG_VLAN_ID (.+)
+
+Start
+  ^interface .* -> VLAN
+
+VLAN
+  ^interface ${INTERFACE} -> Record
+  ^\s+name\s+${NAME}
+  ^\s+tagged\s+vlan\s+${TAG_VLAN_ID}
+  ^\s+untagged\s+vlan\s+${UNTAG_VLAN_ID}
+
